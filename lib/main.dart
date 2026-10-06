@@ -2,12 +2,12 @@ import 'package:assistant/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:assistant/providers/chat_provider.dart';
-import 'package:assistant/widgets/buttons/refresh_button.dart';
+import 'package:assistant/widgets/buttons/clear_button.dart';
 import 'package:assistant/widgets/chat_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Repository.chunkFiles();
+  await Repository.init();
   runApp(const MainApp());
 }
 
@@ -42,18 +42,18 @@ class MainApp extends StatelessWidget {
                     fontSize: 20.0,
                   ),
                 ),
-                const Text(
+                Text(
                   'Your favourite chat assistant',
                     style: TextStyle(
+                    color: Theme.of(context).colorScheme.secondary,
                     fontSize: 12.0,
-                    color: Colors.white54,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
             ),
             actions: [
-              RefreshButton(),
+              ClearButton(),
             ],
           ),
           body: ChatScreen(),

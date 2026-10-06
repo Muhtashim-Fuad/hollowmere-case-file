@@ -87,7 +87,6 @@ class ChatTextField extends StatelessWidget {
               maximumSize: const Size(48.0, 48.0),
               foregroundColor: Theme.of(context).colorScheme.onPrimary,
               backgroundColor: Theme.of(context).colorScheme.primary,
-              
             ),
             onPressed: 
             Provider.of<ChatProvider>(context).isGeneratingAnswer ? 
@@ -125,13 +124,16 @@ class MessageChip extends StatelessWidget {
         constraints: BoxConstraints(
           maxWidth: MediaQuery.of(context).size.width * 0.75,
         ),
-        child: Card(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-            child: MarkdownBody(
-              data: message,
-              selectable: true,
-            ),
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 6.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.surfaceContainer,
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: MarkdownBody(
+            data: message,
+            selectable: true,
           ),
         ),
       ),
